@@ -12,32 +12,32 @@ html_code = """
 """
 st.markdown(html_code, unsafe_allow_html=True)
 
-with st.expander(expanded=True, label='Descrição Resumida'):
-    q1 = st.text_input(label='Resumo')
+form = st.form("my_form", clear_on_submit=True)
+exp1 = form.expander(expanded=True, label='**Descrição Resumida**')
+q1 = exp1.text_input(label='Resumo')
 
-with st.expander(expanded=True, label='Descrição Geral'):
-    q2 = st.text_input(label='O que será feito?')
-    q3 = st.text_input(label='Por que será feito?')
-    q4 = st.text_input(label='Resultado esperado?')
-    q5 = st.text_input(label='Mudança Funcional ou Técnica?')
-    q6 = st.text_input(label='Comunicação com a área afetada anexa?')
+exp2 = form.expander(expanded=True, label='**Descrição Geral**')
+q2 = exp2.text_input(label='O que será feito?')
+q3 = exp2.text_input(label='Por que será feito?')
+q4 = exp2.text_input(label='Resultado esperado?')
+q5 = exp2.text_input(label='Mudança Funcional ou Técnica?')
+q6 = exp2.text_input(label='Comunicação com a área afetada anexa?')
 
-with st.expander(expanded=True, label='Impacto de Implantação'):
-    q7 = st.text_input(label='Qual o possível impacto no ambiente durante a execução da mudança?')
-    q8 = st.text_input(
-        label='Em caso de falha, quais serviços podem ser afetados e qual o impacto na rotina do usuário?')
-    q9 = st.text_input(label='Qual o impacto para o negócio se a mudança não for realizada?')
-    q10 = st.text_input(label='Impactos em caso de Rollback')
+exp3 = form.expander(expanded=True, label='**Impacto de Implantação**')
+q7 = exp3.text_input(label='Qual o possível impacto no ambiente durante a execução da mudança?')
+q8 = exp3.text_input(label='Em caso de falha, quais serviços podem ser afetados e qual o impacto na rotina do usuário?')
+q9 = exp3.text_input(label='Qual o impacto para o negócio se a mudança não for realizada?')
+q10 = exp3.text_input(label='Impactos em caso de Rollback')
 
-with st.expander(expanded=True, label='Plano de Implementação'):
-    q11 = st.text_area(label='Descrição de implementação (separada por nova linha)')
+exp4 = form.expander(expanded=True, label='**Plano de Implementação**')
+q11 = exp4.text_area(label='Descrição de implementação (separado por uma nova linha)')
 
-with st.expander(expanded=True, label='Plano de Retorno (Rollback)'):
-    q12 = st.text_area(label='Descrição de retorno (separada por nova linha)')
+exp5 = form.expander(expanded=True, label='**Plano de Retorno (Rollback)**')
+q12 = exp5.text_area(label='Descrição de retorno (separado por uma nova linha)')
 
-botao = st.button(label='Gerar', use_container_width=True)
+submit = form.form_submit_button("Gerar", use_container_width=True, type='primary')
 
-if botao:
+if submit:
     st.markdown(f"""
     #### 1. **Descrição Resumida:**
     {q1}
