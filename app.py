@@ -12,7 +12,7 @@ html_code = """
 """
 st.markdown(html_code, unsafe_allow_html=True)
 
-form = st.form("my_form", clear_on_submit=True)
+form = st.form("my_form", clear_on_submit=True, border=False)
 exp1 = form.expander(expanded=True, label='**Descrição Resumida**')
 q1 = exp1.text_input(label='Resumo')
 
