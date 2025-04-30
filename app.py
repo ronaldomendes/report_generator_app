@@ -2,6 +2,22 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
+msg11 = """
+Exemplo:
+- Acessar o serviço Foo;
+- Executar a promoção do código da versão 1.x.x do serviço Foo;
+- Monitorar a execução da pipeline de deployment no serviço Foo;
+- Acompanhar até às 12h do dia seguinte, capturando evidências de sucesso ou falha.
+"""
+
+msg12 = """
+Exemplo:
+- Acessar o serviço Foo;
+- Reverter para a versão anterior (1.x.x do serviço Foo), utilizando o pacote anterior;
+- Acompanhar a execução da pipeline de rollback, garantindo que a reversão ocorra sem erros;
+- Validar que o sistema está operando corretamente com a versão anterior.
+"""
+
 html_code = """
 <style>
     footer {visibility: hidden;}
@@ -12,7 +28,7 @@ html_code = """
 """
 st.markdown(html_code, unsafe_allow_html=True)
 
-form = st.form("my_form", clear_on_submit=True, border=False)
+form = st.form("my_form", clear_on_submit=False, border=False)
 exp1 = form.expander(expanded=True, label='**Descrição Resumida**')
 q1 = exp1.text_input(label='Resumo')
 
@@ -30,10 +46,10 @@ q9 = exp3.text_input(label='Qual o impacto para o negócio se a mudança não fo
 q10 = exp3.text_input(label='Impactos em caso de Rollback')
 
 exp4 = form.expander(expanded=True, label='**Plano de Implementação**')
-q11 = exp4.text_area(label='Descrição de implementação (separado por uma nova linha)')
+q11 = exp4.text_area(label='Descrição de implementação (texto simples separado por uma nova linha)', help=msg11)
 
 exp5 = form.expander(expanded=True, label='**Plano de Retorno (Rollback)**')
-q12 = exp5.text_area(label='Descrição de retorno (separado por uma nova linha)')
+q12 = exp5.text_area(label='Descrição de retorno (texto simples separado por uma nova linha)', help=msg12)
 
 submit = form.form_submit_button("Gerar", use_container_width=True, type='primary')
 
